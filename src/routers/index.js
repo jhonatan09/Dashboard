@@ -13,7 +13,7 @@ function Routers (){
     const currentUrl = location.pathname ;
     return(
         <div className="main">
-                {location.pathname !== '/Dashboard' ?
+                {location.pathname !== '/Dashboard/' ?
                 <>
                     <Menu />
                     <Switch>
@@ -29,7 +29,7 @@ function Routers (){
                     </Switch>
                 </>
                     : 
-                    <Route exact path="/Dashboard">
+                    <Route exact path="/Dashboard/">
                         <Login />
                     </Route>
                 }
