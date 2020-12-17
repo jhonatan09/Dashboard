@@ -1,0 +1,69 @@
+@import '../../styleglobal/global.scss';
+
+.login-page {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100%;
+    background-image: url('../../assents/bg-login.jpg');
+    padding: 32px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    .form {
+        width: 300px;
+        height: 300px;
+        background: #3173b7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 16px;
+        margin:21% auto;
+        border-radius: 10px;
+        .input-data {
+            width: 100%;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            label {
+                width: 130px;
+                font-weight: 700;
+                font-size: 20px;
+                margin-right: 8px;
+                color: #fff;
+            }
+            input {
+                width: 100%;
+                height: 30px;
+            }
+            &:nth-of-type(1) {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+        button {
+            width: 30%;
+            border: none;
+            height: 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 17px;
+            margin-right: 8px;
+            color: #494848;
+        }
+        .Popup-Error {
+            margin-bottom: 8px;
+            span {
+                font-size: 16px;
+                font-weight: bold;
+                color: #7d0600;
+            }
+        }
+    }
+    @media (max-width: 767px){
+        background-position: center;
+        .form {
+            margin:65% auto;
+        }
+    }
+}
