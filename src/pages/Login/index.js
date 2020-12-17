@@ -21,7 +21,7 @@ function Login() {
         if(datas.name === newArr.name && datas.password === newArr.password){
             const user = newArr;
             localStorage.setItem('@Provi:user', JSON.stringify(user));
-            history.push('/home'); 
+            history.push('/Dashboard/home'); 
         }else{
             setWarning(true)
            setTimeout(()=> {
