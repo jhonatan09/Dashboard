@@ -12,7 +12,7 @@ function Header() {
 
     const handleClickLogout = () => {
         localStorage.removeItem('@Provi:user');
-        history.push('/'); 
+        history.push('/Dashboard'); 
     }
 
     const handleClickShowLogout = () => {
