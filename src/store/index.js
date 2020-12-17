@@ -11,7 +11,7 @@ function DataContextProvider(props) {
   useEffect(() => {
     axios({
         method: 'GET',
-        url: 'http://www.mocky.io/v2/5c923b0932000029056bce39',
+        url: 'https://www.mocky.io/v2/5c923b0932000029056bce39',
     })
     .then(res => {
       setNewArr({id: res.data.UserId, name: 'Jhonatan', password: '12345', amountPayd: res.data.amountPayd, monthlyInterest:  res.data.monthlyInterest, amountTaken:  res.data.amountTaken, installments:  res.data.installments, totalAmountInTaxes:  res.data.totalAmountInTaxes })
