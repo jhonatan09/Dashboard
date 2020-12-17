@@ -13,23 +13,23 @@ function Routers (){
     const currentUrl = location.pathname ;
     return(
         <div className="main">
-                {location.pathname !== '/' ?
+                {location.pathname !== '/Dashboard' ?
                 <>
                     <Menu />
                     <Switch>
-                        <Route exact path="/home">
+                        <Route exact path="/Dashboard/home">
                             <Home />
                         </Route>
-                        <Route exact path="/pay">
+                        <Route exact path="/Dashboard/pay">
                             <Payment />
                         </Route>
-                        <Route exact path="/order">
+                        <Route exact path="/Dashboard/order">
                             <Order />
                         </Route>    
                     </Switch>
                 </>
                     : 
-                    <Route exact path="/">
+                    <Route exact path="/Dashboard">
                         <Login />
                     </Route>
                 }
@@ -37,7 +37,7 @@ function Routers (){
                 <Redirect
                         to={{
                             pathname: 
-                            !user? '/' : currentUrl
+                            !user? '/Dashboard' : currentUrl
 
                         }}
                 />

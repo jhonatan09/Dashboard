@@ -26,7 +26,7 @@ function Header() {
     return (
         <div className="nav-bar">
             <div className="logo">
-                <Link to="/home" className="links-home">
+                <Link to="/Dashboard/home" className="links-home">
                     GruntPix
                 </Link>
             </div>
@@ -37,10 +37,10 @@ function Header() {
                     <span className="line line-3"></span>
                 </div>
                 <div className={`links links_mob ${changeMob? 'active': ''}`}>
-                    <Link to="/pay" className="links_text">
+                    <Link to="/Dashboard/pay" className="links_text">
                         Minhas faturas
                     </Link>
-                    <Link to="/order" className="links_text">
+                    <Link to="/Dashboard/order" className="links_text">
                         Fazer pedido
                     </Link>
                     <div className="user">
