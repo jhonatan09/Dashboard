@@ -1,18 +1,72 @@
+$bg: #ffffff;
+$panel: #111317;
+$text: #e6e6e6;
+$muted: #a6a8ad;
+$primary: #4f46e5;
+$primary-2: #7c3aed;
+$accent: #22c55e;
+
+$light: #f9fafb;
+$border-radius: 8px;
+$dark: #111317;
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration:none;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+@mixin card($bg: #fff) {
+  background: $bg;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: $spacing-md;
+}
+
+html,
 body {
-    -webkit-font-smoothing: antialiased;
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(
+      1200px 600px at 80% -20%,
+      rgba($primary, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      1200px 600px at -10% 110%,
+      rgba($primary-2, 0.15),
+      transparent
+    ),
+    $bg;
+  color: $text;
 }
 
-.hidden {
-    display: none;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f9f7ff 0%, #f1edff 100%);
+  box-sizing: border-box;
 }

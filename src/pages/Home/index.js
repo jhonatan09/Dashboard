@@ -1,45 +1,80 @@
-import React, {useContext, useState, useEffect} from 'react';
-import './styles.scss';
-import {DataContext} from '../../store'
+import React, { useContext } from "react";
+import { DataContext } from "../../store";
+import { useHistory } from "react-router-dom"; // <-- corrigido
+import "./styles.scss";
 
 function Home() {
-    const {newArr} = useContext(DataContext)
-    return (
-        <div className="home">
-            <div className="quakers-info quakers-info_geral">
-                <h2>
-                    Informações Gerais
-                </h2>
-                <ul className="info-list">
-                    <li className="info-data">
-                        <label>
-                            Nome do beneficiário:
-                        </label>
-                        {newArr.name}
-                    </li>
-                    <li className="info-data">
-                        <label>
-                            Valor a ser pago:
-                        </label>
-                        {newArr.amountPayd}
-                    </li>
-                    <li className="info-data">
-                        <label>
-                        Numero de parcelas restantes:
-                        </label>
-                        {!!newArr.installments? newArr.installments.length: ''}
-                    </li>
-                    <li className="info-data">
-                        <label>
-                            Valor do emprestimo:
-                        </label>
-                        R$ {newArr.amountTaken}
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+  const { user } = useContext(DataContext);
+  const history = useHistory(); // <-- corrigido
 
+  if (!user) {
+    return <div className="home">Nenhum dado encontrado!</div>;
+  }
+
+  const hasOrders = user.orders && user.orders.length > 0;
+
+  return (
+    <div className="home">
+      <div className="card">
+        <h2 className="card-title">Bem-vindo, {user.name}!</h2>
+
+        {!hasOrders ? (
+          <div className="empty-state">
+            <p>🚫 Nenhum empréstimo contratado ainda.</p>
+            <button
+              onClick={() => history.push("/Dashboard/order")} // <-- corrigido
+              className="btn-primary"
+            >
+              Criar novo empréstimo
+            </button>
+          </div>
+        ) : (
+          user.orders.map((order, idx) => (
+            <div key={order.id} className="order-summary">
+              <h3 className="info-name">📌 Pedido {idx + 1}</h3>
+              <div className="info-list">
+                <div className="info-item">
+                  <span className="label">Valor emprestado:</span>
+                  <span className="value">R$ {order.amountTaken}</span>
+                </div>
+                <div className="info-item">
+                  <span className="label">Já pago:</span>
+                  <span className="value">R$ {order.paidAmount}</span>
+                </div>
+                <div className="info-item">
+                  <span className="label">Taxa de juros:</span>
+                  <span className="value">{order.interestRate}</span>
+                </div>
+                <div className="info-item">
+                  <span className="label">Total de juros:</span>
+                  <span className="value highlight">
+                    R$ {order.totalAmountInTaxes}
+                  </span>
+                </div>
+              </div>
+
+              <h4 className="info-name">Parcelas</h4>
+              <div className="info-list">
+                {order.installments?.map((item, i) => (
+                  <div key={i} className="info-item">
+                    <div className="label">{item.dueDate}</div>
+                    <div className="value">{item.formatedValue}</div>
+                    <div
+                      className={`value highlight ${
+                        item.payd ? "paid" : "pending"
+                      }`}
+                    >
+                      {item.payd ? "Pago" : "Em aberto"}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default Home;
