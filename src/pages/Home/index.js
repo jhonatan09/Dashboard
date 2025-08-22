@@ -52,23 +52,6 @@ function Home() {
                   </span>
                 </div>
               </div>
-
-              <h4 className="info-name">Parcelas</h4>
-              <div className="info-list">
-                {order.installments?.map((item, i) => (
-                  <div key={i} className="info-item">
-                    <div className="label">{item.dueDate}</div>
-                    <div className="value">{item.formatedValue}</div>
-                    <div
-                      className={`value highlight ${
-                        item.payd ? "paid" : "pending"
-                      }`}
-                    >
-                      {item.payd ? "Pago" : "Em aberto"}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           ))
         )}
